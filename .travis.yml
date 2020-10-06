@@ -10,5 +10,5 @@ cache:
     yarn: true
 
 scripts:
-    - 'build': 'yarn build'
-    - 'start': 'nodemon index.js'
+    - yarn build
+    # - nodemon index.js
