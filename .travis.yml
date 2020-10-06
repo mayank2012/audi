@@ -5,7 +5,10 @@ node_js:
     - 12
 jobs:
     fast_finish: true
-
 cache: 
     npm: true
     yarn: true
+
+scripts:
+    - 'build': 'yarn build'
+    - 'start': 'nodemon index.js'
