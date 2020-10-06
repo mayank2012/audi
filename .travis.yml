@@ -10,5 +10,5 @@ cache:
     yarn: true
 
 scripts:
-    - yarn build
-    # - nodemon index.js
+    - npm install npm@latest -g
+    - npm build .
