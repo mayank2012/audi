@@ -1,14 +1,8 @@
+os: linux
 dist: trusty
 language: node_js
 node_js: 
     - 12
-
-env:
-    - TOKEN_SECRET = "STARTUPMANCH_v256"
-    - DB_USER = 'admin'
-    - DB_PASSWORD = 'justPassword'
-    - DB_NAME = 'STARTUPMANCH_PROD'
-    - SERVICE_PORT = 8080
 jobs:
     fast_finish: true
 
