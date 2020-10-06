@@ -1,10 +1,10 @@
 const router = require('express').Router()
-const User = require('../model/User')
+const User = require('../../model/User/User')
 const jwt_auth = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const { registerValidation, loginValidation } = require('../model/validation')
+const { registerValidation, loginValidation } = require('../../model/validation')
 
-router.post('/register', async (req, res) =>{
+router.post('/register', async (req, res) => {
     // Data Validation
     const { error } = registerValidation(req.body)
     if (error) return res.status(400).send(error.details[0].message)

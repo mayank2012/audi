@@ -1,5 +1,5 @@
 {
-  "name": "jwt-authentication",
+  "name": "startupmanch-backend-server",
   "version": "1.0.0",
   "description": "JSON web token authentication using Node ",
   "main": "index.js",
