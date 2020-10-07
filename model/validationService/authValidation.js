@@ -8,8 +8,6 @@ const registerValidation = data => {
     })
     
     return validationSchema.validate(data)
-
-    // dataValidate.valid()
 }
 
 const loginValidation = data => {

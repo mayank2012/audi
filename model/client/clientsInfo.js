@@ -3,88 +3,88 @@ const mongoose = require('mongoose')
 const clientSchema = mongoose.Schema({
     companyName: {
         type: String,
-        required: true
+        // required: true
     },
     companyID: {},
     ownerName: {
         type: String,
-        required: true
+        // required: true
     },
     ownerMailId: {
         type: String,
-        required: true
+        // required: true
     },
     ownerMobileNo: {
         type: String,
-        required: true
+        // required: true
     },
     ownerOtherNo: {
         type: String,
-        required: false
+        // required: false
     },
     companyContactNo: {
         type: String,
-        required: true
+        // required: true
     },
     companyOfficialEmailId: {
         type: String,
-        required: true
+        // required: true
     },
     companyAddressLine1: {
         type: String,
-        required: true
+        // required: true
     },
     companyAddressLine2: {
         type: String,
-        required: false
+        // required: false
     },
     companyAddressCity: {
         type: String,
-        required: true
+        // required: true
     },
     companyAddressState: {
         type: String,
-        required: true
+        // required: true
     },
     companyAddressPIN: {
         type: String,
-        required: true
+        // required: true
     },
     companyAddressCountry: {
         type: String,
-        required: true
+        // required: true
     },
     listCompanyDirectors: {
         type: String,
-        required: true
+        // required: true
     },
     listCurrentInvestors: {
         type: String,
-        required: true
+        // required: true
     },
     listCurrentMentors: {
         type: String,
-        required: false
+        // required: false
     },
     aboutCompany: {
         type: String,
-        required: true
+        // required: true
     },
     companyTargetMarket: {
         type: String,
-        required: true
+        // required: true
     },
     companyTargetMarketRevenue: {
         type: String,
-        required: true
+        // required: true
     },
     companyCurrentPartners: {
         type: String,
-        required: true
+        // required: true
     },
     companyCurrentShareHolders: {
         type: String,
-        required: true
+        // required: true
     },
     timestamp: {
         type: Date,
