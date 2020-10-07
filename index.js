@@ -22,4 +22,4 @@ app.use('/api/user', authRoute)
 app.use('/api/posts', postRoute)
 app.use('/api/register', clientRoute)
 
-app.listen(process.env.SERVICE_PORT, () => console.log('Server Up at localhost:'+process.env.SERVICE_PORT))
+app.listen(process.env.SERVICE_PORT, () => console.log('Server Up at localhost:' + process.env.SERVICE_PORT))

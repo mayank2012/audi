@@ -3,12 +3,15 @@ const mongoose = require('mongoose')
 const clientSchema = mongoose.Schema({
     companyName: {
         type: String,
-        // required: true
+        required: true
     },
-    companyID: {},
+    companyID: {
+        type: String,
+        required: true
+    },
     ownerName: {
         type: String,
-        // required: true
+        required: true
     },
     ownerMailId: {
         type: String,
@@ -28,7 +31,7 @@ const clientSchema = mongoose.Schema({
     },
     companyOfficialEmailId: {
         type: String,
-        // required: true
+        required: true
     },
     companyAddressLine1: {
         type: String,

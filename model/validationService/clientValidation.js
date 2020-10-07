@@ -3,6 +3,7 @@ const dataValidation = require('@hapi/joi')
 const companyValidation = data => {
     const clientValidationSchema = dataValidation.object({
         companyName: dataValidation.string().required(),
+        companyID: dataValidation.string().required(),
         ownerName: dataValidation.string().required(),
         companyOfficialEmailId: dataValidation.string().required()
     })

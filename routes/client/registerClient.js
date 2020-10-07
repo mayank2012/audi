@@ -46,7 +46,7 @@ router.post('/client/:userType', async(req, res) => {
 
             try {
                 const savedCompany = await company.save()
-                res.status(201).send(company)
+                res.status(201).send({company_id: company.companyID})
             } catch (error){
                 res.status(400).send(error)
             }
