@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const postRoute = require('./routes/posts')
+const homeRoute = require('./routes/home')
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true }, ()
 app.use(express.json())
 
 // Routes Middleware
+app.use('/', homeRoute)
 app.use('/api/user', authRoute)
 app.use('/api/posts', postRoute)
 app.use('/api/register', clientRoute)

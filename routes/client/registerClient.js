@@ -2,7 +2,6 @@ const router = require('express').Router()
 const Client = require('../../model/client/clientsInfo')
 const uuid = require('uuid')
 const jwt_auth = require('jsonwebtoken')
-const { route } = require('../posts')
 const { companyValidation } = require('../../model/validationService/clientValidation')
 
 function generateUUID() {
