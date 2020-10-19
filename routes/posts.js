@@ -1,7 +1,6 @@
 const router = require('express').Router()
-const verify = require('./oAuth/verifyToken')
+import verify from './oAuth/verifyToken'
 
-// router.get('/api/user/login/_oAuth', async(req, res) => {
 router.get('/', verify, async(req, res) => {
     res.json({
         status: {
@@ -11,4 +10,4 @@ router.get('/', verify, async(req, res) => {
     })
 })
 
-module.exports = router
+export default router

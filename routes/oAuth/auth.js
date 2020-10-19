@@ -1,8 +1,8 @@
 const router = require('express').Router()
-const User = require('../../model/User/User')
-const jwt_auth = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const { registerValidation, loginValidation } = require('../../model/validationService/authValidation')
+import User, { findOne } from '../../model/User/User'
+import { sign } from 'jsonwebtoken'
+import { genSalt, hash, compare } from 'bcryptjs'
+import { registerValidation, loginValidation } from '../../model/validationService/authValidation'
 
 router.post('/register', async (req, res) => {
     // Data Validation
@@ -10,12 +10,12 @@ router.post('/register', async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message)
 
     // Check if User Details already exists
-    const emailDuplicationCheck = await User.findOne({email: req.body.email})
+    const emailDuplicationCheck = await findOne({email: req.body.email})
     if (emailDuplicationCheck) return res.status(400).send('EMail already Exists')
 
     // Password Hashing
-    const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(req.body.password, salt)
+    const salt = await genSalt(10)
+    const hashedPassword = await hash(req.body.password, salt)
 
     // Create New User
     const user = new User({
@@ -39,15 +39,15 @@ router.post('/login', async (req, res) => {
         if (error) return res.status(400).send(error.details[0].message)
 
         // Check if User Details exists
-        const user = await User.findOne({email: req.body.email})
+        const user = await findOne({email: req.body.email})
         if (!user) return res.status(400).send('EMail does not Exists')
 
         // Password Validation
-        const validPassword = await bcrypt.compare(req.body.password, user.password)
+        const validPassword = await compare(req.body.password, user.password)
         if (!validPassword) return res.status(400).send("Password doesn't match")
 
         // Create and Assign User JWT Token
-        const userToken = jwt_auth.sign({_id: user._id}, process.env.TOKEN_SECRET)
+        const userToken = sign({_id: user._id}, process.env.TOKEN_SECRET)
 
         res.status(200).send({
             _id: user._id,
@@ -56,4 +56,4 @@ router.post('/login', async (req, res) => {
         })
 })
 
-module.exports = router
+export default router

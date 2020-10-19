@@ -1,9 +1,11 @@
 const router = require('express').Router()
-const Client = require('../../model/client/clientsInfo')
-const uuid = require('uuid')
-const jwt_auth = require('jsonwebtoken')
-const { companyValidation } = require('../../model/validationService/clientValidation')
+import Client, { findOne } from '../../model/client/clientsInfo'
+import uuid from 'uuid'
+import jwt_auth from 'jsonwebtoken'
+import { companyValidation } from '../../model/validationService/clientValidation'
 
+/**
+ */
 function generateUUID() {
     return `${process.env.UUID_STRING}`.replace(/[xy]/g, function(c) {
        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -11,6 +13,11 @@ function generateUUID() {
     });
  }
 
+ /**
+ * @param  {userType'} '/client/
+ * @param  {} async(req
+ * @param  {} res
+ */
 router.post('/client/:userType', async(req, res) => {
     if (req.params.userType === "investor") {
         res.status(201).send('Ok')
@@ -18,7 +25,7 @@ router.post('/client/:userType', async(req, res) => {
         const { error } = companyValidation(req.body)
         if (error) return res.status(400).send(error)
 
-        const duplicateCompanyName = await Client.findOne({companyName: req.body.companyName})
+        const duplicateCompanyName = await findOne({companyName: req.body.companyName})
         if (duplicateCompanyName) {
             const companyUpdates = new Client({
                 ownerName: req.body.ownerName,
@@ -52,8 +59,12 @@ router.post('/client/:userType', async(req, res) => {
         }
     } else if (req.params.userType === "individual") {
         res.status(202).send('Ok')
+    } else if (req.params.userType === "msme") {
+        res.status(202).send('Ok')
+    } else if (req.params.userType === "mentors") {
+        res.status(202).send('Ok')
     }
     // res.status(404).send('Not Found')
 })
 
-module.exports = router
+export default router

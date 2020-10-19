@@ -1,13 +1,14 @@
-const dataValidation = require('@hapi/joi')
+import { object, string } from '@hapi/joi'
 
 const companyValidation = data => {
-    const clientValidationSchema = dataValidation.object({
-        companyName: dataValidation.string().required(),
-        companyID: dataValidation.string().required(),
-        ownerName: dataValidation.string().required(),
-        companyOfficialEmailId: dataValidation.string().required()
+    const clientValidationSchema = object({
+        companyName: string().required(),
+        companyID: string().required(),
+        ownerName: string().required(),
+        companyOfficialEmailId: string().required()
     })
     return clientValidationSchema.validate(data)
 }
 
-module.exports.companyValidation = companyValidation
+const _companyValidation = companyValidation
+export { _companyValidation as companyValidation }

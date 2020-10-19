@@ -1,6 +1,5 @@
 const router = require('express').Router()
 
-// router.get('/api/user/login/_oAuth', async(req, res) => {
 router.get('/', async(req, res) => {
     res.json({
         status: {
@@ -11,4 +10,4 @@ router.get('/', async(req, res) => {
     })
 })
 
-module.exports = router
+export default router

@@ -1,22 +1,22 @@
-const express = require('express')
+import express, { json } from 'express'
 const app = express()
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-const postRoute = require('./routes/posts')
-const homeRoute = require('./routes/home')
+import { connect } from 'mongoose'
+import { config } from 'dotenv'
+import postRoute from './routes/posts'
+import homeRoute from './routes/home'
 
-dotenv.config();
+config();
 
 //Import Routes
-const authRoute = require('./routes/oAuth/auth')
-const clientRoute = require('./routes/client/registerClient')
+import authRoute from './routes/oAuth/auth'
+import clientRoute from './routes/client/registerClient'
 
 // Connect DB
 const db_url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@auth-cluster.gnkyo.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
-mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('DB Connection Healthy...!!! '))
+connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true }, () => console.log('DB Connection Healthy...!!! '))
 
 // Middleware
-app.use(express.json())
+app.use(json())
 
 // Routes Middleware
 app.use('/', homeRoute)
