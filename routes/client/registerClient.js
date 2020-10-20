@@ -1,10 +1,9 @@
 import express from 'express'
+import verify from 'jsonwebtoken';
 const router = express.Router()
 import Client from '../../model/client/clientsInfo.js'
 import { companyValidation } from '../../model/validationService/clientValidation.js'
 
-/**
- */
 function generateUUID() {
     return `${process.env.UUID_STRING}`.replace(/[xy]/g, function(c) {
        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);

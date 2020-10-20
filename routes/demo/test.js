@@ -27,7 +27,10 @@ router.delete("path", (req, res) => {});
  *     responses:
  *       '200':
  *         description: Successful
- *         content: application/json
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
  */
 router.patch("/patch/:id", express.json(), (req, res) => {
   res.status(200).json({
@@ -60,7 +63,10 @@ router.patch("/patch/:id", express.json(), (req, res) => {
  *     responses:
  *       '200':
  *         description: Successful
- *         content: application/json
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
  */
 router.put("/put/:id", express.json(), (req, res) => {
   res.status(200).json({
@@ -84,7 +90,10 @@ router.put("/put/:id", express.json(), (req, res) => {
  *     responses:
  *       '200':
  *         description: Successful
- *         content: application/json
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
  */
 router.delete("/delete/:id", express.json(), (req, res) => {
   res.status(200).json({

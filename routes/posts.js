@@ -4,21 +4,19 @@ import verify from "./oAuth/verifyToken.js";
 const router = express.Router();
 
 /**
- * @swagger
+ * @openapi
  * /api/posts:
  *   get:
  *     tags:
  *       - Posts
+ *     security:
+ *       - bearerAuth: []
  *     summary: List all the posts
- *     parameters:
- *       - in: header
- *         name: Authorization
- *         required: true
- *         type: string
  *     responses:
  *       '200':
- *         description: Successful
- *         content: application/json
+ *         description: Able to retrive all the posts
+ *       '401':
+ *         description: Please pass the correct User Access Token
  */
 router.get("/", verify, async (req, res) => {
   res.json({

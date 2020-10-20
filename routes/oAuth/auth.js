@@ -9,34 +9,36 @@ import {
 } from "../../model/validationService/authValidation.js";
 
 /**
- * @swagger
+ * @openapi
  * /api/user/register:
  *   post:
  *     tags:
  *       - Users oAuth
  *     summary: Register new Users
- *     consume:
- *       - application/json
- *     parameters:
- *       - in: body
- *         name: reqBody
- *         description: Pass the details for new User
- *         schema:
- *           type: object
- *           properties:
- *             name:
- *               type: string
- *             email:
- *               type: string
- *               format: email
- *             password:
- *               type: string
- *           items:
- *             $ref: '#/definitions/Register'
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
  *     responses:
  *       '200':
  *         description: Successful
- *         content: application/json
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
  */
 router.post("/register", async (req, res) => {
   // Data Validation
@@ -69,31 +71,33 @@ router.post("/register", async (req, res) => {
 });
 
 /**
- * @swagger
- * /api/user/Login:
+ * @openapi
+ * /api/user/login:
  *   post:
  *     tags:
  *       - Users oAuth
  *     summary: User Login
- *     parameters:
- *       - in: body
- *         name: reqBody
- *         description: Pass the details for new User
- *         schema:
- *           type: object
- *           properties:
- *             email:
- *               type: string
- *               format: email
- *             password:
- *               type: string
- *               format: password
- *           items:
- *             $ref: '#/definitions/Register'
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
  *     responses:
  *       '200':
  *         description: Successful
- *         content: application/json
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
  */
 router.post("/login", async (req, res) => {
   // Data Validation
@@ -117,7 +121,5 @@ router.post("/login", async (req, res) => {
     message: "Holla! Successful Login...!!",
   });
 });
-
-
 
 export default router;

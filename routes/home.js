@@ -9,7 +9,6 @@ const router = express.Router()
  *     responses:
  *       '200':
  *         description: Successful
- *         content: application/json
 */
 router.get('/', async(req, res) => {
     res.json({

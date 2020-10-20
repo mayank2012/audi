@@ -7,7 +7,7 @@ import mongodb from "mongoose";
 import { config } from "dotenv";
 import postRoute from "./routes/posts.js";
 import homeRoute from "./routes/home.js";
-import testRoute from "./routes/test.js";
+// import testRoute from "./routes/demo/test.js";
 import swaggerDoc from "./config/swaggerDoc.js";
 
 config();
@@ -37,6 +37,6 @@ app.use("/", homeRoute);
 app.use("/api/user", authRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/register", clientRoute);
-app.use("/api/test", testRoute);
+// app.use("/api/test", testRoute);
 
 app.listen(PORT, () => console.log("Server Up at localhost:" + PORT));
