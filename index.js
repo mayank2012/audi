@@ -8,7 +8,7 @@ import homeRoute from './routes/home.js'
 import swaggerDoc from './config/swaggerDoc.js'
 
 config();
-const PORT = process.env.SERVICE_PORT || process.env.PORT || 80
+const PORT = process.env.PORT || 80
 
 //Import Routes
 import authRoute from './routes/oAuth/auth.js'
