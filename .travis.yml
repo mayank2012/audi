@@ -2,7 +2,7 @@ os: linux
 dist: trusty
 language: node_js
 node_js:
-  - 12
+  - 14
 jobs:
   fast_finish: true
 cache:
