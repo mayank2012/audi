@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose'
+import mongoose from 'mongoose'
 
-const clientSchema = Schema({
+const clientSchema = mongoose.Schema({
     companyName: {
         type: String,
         required: true
@@ -96,4 +96,4 @@ const clientSchema = Schema({
 
 })
 
-export default model('Client', clientSchema)
+export default mongoose.model('Client', clientSchema)

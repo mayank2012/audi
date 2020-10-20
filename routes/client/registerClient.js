@@ -1,8 +1,7 @@
-const router = require('express').Router()
-import Client, { findOne } from '../../model/client/clientsInfo'
-import uuid from 'uuid'
-import jwt_auth from 'jsonwebtoken'
-import { companyValidation } from '../../model/validationService/clientValidation'
+import express from 'express'
+const router = express.Router()
+import Client from '../../model/client/clientsInfo.js'
+import { companyValidation } from '../../model/validationService/clientValidation.js'
 
 /**
  */
@@ -11,13 +10,8 @@ function generateUUID() {
        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
        return v.toString(16);
     });
- }
+}
 
- /**
- * @param  {userType'} '/client/
- * @param  {} async(req
- * @param  {} res
- */
 router.post('/client/:userType', async(req, res) => {
     if (req.params.userType === "investor") {
         res.status(201).send('Ok')
@@ -25,7 +19,7 @@ router.post('/client/:userType', async(req, res) => {
         const { error } = companyValidation(req.body)
         if (error) return res.status(400).send(error)
 
-        const duplicateCompanyName = await findOne({companyName: req.body.companyName})
+        const duplicateCompanyName = await Client.findOne({companyName: req.body.companyName})
         if (duplicateCompanyName) {
             const companyUpdates = new Client({
                 ownerName: req.body.ownerName,

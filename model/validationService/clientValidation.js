@@ -1,11 +1,11 @@
-import { object, string } from '@hapi/joi'
+import hjoi from '@hapi/joi'
 
 const companyValidation = data => {
-    const clientValidationSchema = object({
-        companyName: string().required(),
-        companyID: string().required(),
-        ownerName: string().required(),
-        companyOfficialEmailId: string().required()
+    const clientValidationSchema = hjoi.object({
+        companyName: hjoi.string().required(),
+        companyID: hjoi.string().required(),
+        ownerName: hjoi.string().required(),
+        companyOfficialEmailId: hjoi.string().required()
     })
     return clientValidationSchema.validate(data)
 }

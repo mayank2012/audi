@@ -1,20 +1,20 @@
-import { object, string } from '@hapi/joi'
+import auth from '@hapi/joi'
 
 
 const registerValidation = data => {
-    const validationSchema = object({
-        name: string().min(6).required(),
-        email: string().min(4).required().email(),
-        password: string().min(6).required()
+    const validationSchema = auth.object({
+        name: auth.string().min(6).required(),
+        email: auth.string().min(4).required().email(),
+        password: auth.string().min(6).required()
     })
     
     return validationSchema.validate(data)
 }
 
 const loginValidation = data => {
-    const validationSchema = object({
-        email: string().min(4).required().email(),
-        password: string().min(6).required()
+    const validationSchema = auth.object({
+        email: auth.string().min(4).required().email(),
+        password: auth.string().min(6).required()
     })
     
     return validationSchema.validate(data)

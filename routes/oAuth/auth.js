@@ -1,21 +1,52 @@
-const router = require('express').Router()
-import User, { findOne } from '../../model/User/User'
-import { sign } from 'jsonwebtoken'
-import { genSalt, hash, compare } from 'bcryptjs'
-import { registerValidation, loginValidation } from '../../model/validationService/authValidation'
+import express from 'express'
+const router = express.Router()
+import User from '../../model/User/User.js'
+import jwt from 'jsonwebtoken'
+import bcrypt from 'bcryptjs'
+import { registerValidation, loginValidation } from '../../model/validationService/authValidation.js'
 
+/**
+ * @swagger
+ * /api/user/register:
+ *   post:
+ *     tags:
+ *       - Users oAuth
+ *     summary: Register new Users
+ *     consume:
+ *       - application/json
+ *     parameters:
+ *       - in: body
+ *         description: Pass the details for new User
+ *         schema:
+ *           type: object
+ *           required:
+ *             - name
+ *             - email
+ *             - password
+ *           properties:
+ *             name:
+ *               type: string
+ *             email:
+ *               type: string
+ *             password:
+ *               type: string
+ *     responses:
+ *       '200':
+ *         description: Successful
+ *         content: application/json
+*/
 router.post('/register', async (req, res) => {
     // Data Validation
     const { error } = registerValidation(req.body)
     if (error) return res.status(400).send(error.details[0].message)
 
     // Check if User Details already exists
-    const emailDuplicationCheck = await findOne({email: req.body.email})
+    const emailDuplicationCheck = await User.findOne({email: req.body.email})
     if (emailDuplicationCheck) return res.status(400).send('EMail already Exists')
 
     // Password Hashing
-    const salt = await genSalt(10)
-    const hashedPassword = await hash(req.body.password, salt)
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(req.body.password, salt)
 
     // Create New User
     const user = new User({
@@ -33,27 +64,52 @@ router.post('/register', async (req, res) => {
     }
 })
 
+/**
+ * @swagger
+ * /api/user/Login:
+ *   post:
+ *     tags:
+ *       - Users oAuth
+ *     summary: User Login
+ *     parameters:
+ *       - in: body
+ *         description: Pass the details for new User
+ *         schema:
+ *           type: object
+ *           required:
+ *             - email
+ *             - password
+ *           properties:
+ *             email:
+ *               type: string
+ *             password:
+ *               type: string
+ *     responses:
+ *       '200':
+ *         description: Successful
+ *         content: application/json
+*/
 router.post('/login', async (req, res) => {
-        // Data Validation
-        const { error } = loginValidation(req.body)
-        if (error) return res.status(400).send(error.details[0].message)
+    // Data Validation
+    const { error } = loginValidation(req.body)
+    if (error) return res.status(400).send(error.details[0].message)
 
-        // Check if User Details exists
-        const user = await findOne({email: req.body.email})
-        if (!user) return res.status(400).send('EMail does not Exists')
+    // Check if User Details exists
+    const user = await User.findOne({email: req.body.email})
+    if (!user) return res.status(400).send('EMail does not Exists')
 
-        // Password Validation
-        const validPassword = await compare(req.body.password, user.password)
-        if (!validPassword) return res.status(400).send("Password doesn't match")
+    // Password Validation
+    const validPassword = await bcrypt.compare(req.body.password, user.password)
+    if (!validPassword) return res.status(400).send("Password doesn't match")
 
-        // Create and Assign User JWT Token
-        const userToken = sign({_id: user._id}, process.env.TOKEN_SECRET)
+    // Create and Assign User JWT Token
+    const userToken = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET)
 
-        res.status(200).send({
-            _id: user._id,
-            token: userToken,
-            message: 'Holla! Successful Login...!!'
-        })
+    res.status(200).send({
+        _id: user._id,
+        token: userToken,
+        message: 'Holla! Successful Login...!!'
+    })
 })
 
 export default router
