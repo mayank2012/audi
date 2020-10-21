@@ -1,7 +1,6 @@
 import express, { json } from "express";
 const app = express();
 import cors from "cors";
-import morgan from "morgan";
 import helmet from "helmet";
 import mongodb from "mongoose";
 import { config } from "dotenv";
