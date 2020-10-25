@@ -4,7 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import mongodb from "mongoose";
 import { config } from "dotenv";
-import postRoute from "./routes/posts.js";
+import postRoute from "./routes/post/posts.js";
 import homeRoute from "./routes/home.js";
 // import userInterfaceRoute from "./UserInterface/index.js";
 // import testRoute from "./routes/demo/test.js";
