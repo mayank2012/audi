@@ -4,7 +4,7 @@ import swaggerJsdoc from "swagger-jsdoc";
 // Doc Source: https://swagger.io/specification/#info-object
 const swaggerOptions = {
   swaggerDefinition: {
-    openapi: "3.0.0",
+    openapi: "3.0.3",
     consumes: ["application/json"],
     produces: ["application/json"],
     info: {

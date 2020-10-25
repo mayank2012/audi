@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon index.js && (cd UserInterface && nodemon)",
     "test": "mocha --require index.js",
     "start": "node index.js",
     "predeploy": "npm audit"
@@ -13,27 +13,31 @@
   "author": "Devesh Kumar",
   "license": "ISC",
   "dependencies": {
+    "admin-bro": "^3.2.5",
+    "admin-bro-expressjs": "^2.1.1",
+    "admin-bro-mongoose": "^0.5.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "mongoose": "^5.10.10",
     "@hapi/joi": "^17.1.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
     "helmet": "^4.1.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.7",
     "morgan": "^1.10.0",
     "swagger-jsdoc": "^4.3.0",
     "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4",
-    "chai": "^4.2.0",
-    "supertest": "^5.0.0",
-    "mocha": "^8.2.0",
-    "eslint": "^7.11.0"
+    "eslint": "^7.12.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.21.5",
+    "nodemon": "^2.0.6"
   },
   "engines": {
     "node": "14.13.0",
     "npm": "6.14.8"
-  }
+  },
+  "repository": "https://github.com/SeptBlast/oAuth_jwt"
 }

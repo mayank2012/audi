@@ -6,13 +6,14 @@ import mongodb from "mongoose";
 import { config } from "dotenv";
 import postRoute from "./routes/posts.js";
 import homeRoute from "./routes/home.js";
+// import userInterfaceRoute from "./UserInterface/index.js";
 // import testRoute from "./routes/demo/test.js";
 import swaggerDoc from "./config/swaggerDoc.js";
 
 config();
 const PORT = process.env.PORT || 80;
 
-//Import Routes
+// Import Routes
 import authRoute from "./routes/oAuth/auth.js";
 import clientRoute from "./routes/client/registerClient.js";
 
@@ -30,6 +31,7 @@ app.use(cors());
 app.use(helmet());
 
 swaggerDoc(app);
+// userInterfaceRoute(app);
 
 // Routes Middleware
 app.use("/", homeRoute);
