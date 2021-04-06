@@ -1,39 +1,40 @@
 {
-  "name": "startupmanch-backend-server",
-  "version": "1.0.0",
-  "description": "JSON web token authentication using Node ",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
-    "predeploy": "npm audit"
-  },
-  "author": "Devesh Kumar",
-  "license": "ISC",
-  "dependencies": {
-    "@hapi/joi": "^17.1.1",
-    "admin-bro": "^3.2.5",
-    "admin-bro-expressjs": "^2.1.1",
-    "admin-bro-mongoose": "^0.5.2",
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-formidable": "^1.2.0",
-    "helmet": "^4.1.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.10",
-    "morgan": "^1.10.0",
-    "swagger-jsdoc": "^4.3.0",
-    "swagger-ui-express": "^4.1.4"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.6"
-  },
-  "engines": {
-    "node": "14.13.0",
-    "npm": "6.14.8"
-  },
-  "repository": "https://github.com/SeptBlast/oAuth_jwt"
+    "name": "startupmanch-backend-server",
+    "version": "1.0.0",
+    "description": "JSON web token authentication using Node ",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon --experimental-modules index.js",
+        "start": "node index.js",
+        "predeploy": "npm audit"
+    },
+    "author": "Devesh Kumar",
+    "license": "ISC",
+    "dependencies": {
+        "@hapi/joi": "^17.1.1",
+        "admin-bro": "^3.4.0",
+        "admin-bro-expressjs": "^2.1.1",
+        "admin-bro-mongoose": "^0.5.2",
+        "axios": "^0.21.1",
+        "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-formidable": "^1.2.0",
+        "helmet": "^4.1.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.12.3",
+        "morgan": "^1.10.0",
+        "swagger-jsdoc": "^4.3.0",
+        "swagger-ui-express": "^4.1.4"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    },
+    "engines": {
+        "node": "14.13.0",
+        "npm": "6.14.8"
+    },
+    "repository": "https://github.com/SeptBlast/oAuth_jwt"
 }
