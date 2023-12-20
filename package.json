@@ -9,7 +9,7 @@
         "start": "node index.js",
         "predeploy": "npm audit"
     },
-    "author": "Devesh Kumar",
+    "author": "mayank Kumar",
     "license": "ISC",
     "dependencies": {
         "@hapi/joi": "^17.1.1",
